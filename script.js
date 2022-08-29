@@ -1,33 +1,23 @@
-//create a function called getComputerChoice.
-//This function should randomly return the strings "Rock", "Paper", or "Scissors"
-//Set a variable (i.e. result) equal to Math.floor(Math.random() * 3). This should produce either 0, 1, or 2.
-// Next use an if/else statement if result === 0, return "Rock", etc.
+//keeps track of player score vs. computer score
+let playerScore = 0;
+let computerScore = 0;
 
+//gave each button a class and saved it to a variable
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
 
 //Selects computer's choice for game of rock, paper, scissors
 const getComputerChoice = () => {
     let result = Math.floor(Math.random() * 3 );
     if(result === 0) {
-        return "Rock";
+        return "rock";
     } else if (result === 1) {
-        return "Paper";
+        return "paper";
     } else if (result === 2) {
-        return "Scissors";
+        return "scissors";
     }
 };
-
-//create a function, playRound, that takes the parameters playerSelection and computerSelection
-//Function needs to return a string that declares the winner of a round (i.e. "You Lose! Paper beats Rock")
-//For the playerSelection parameter, you need it to be case-insensitive (i.e. rock, Rock, RocK)
-//Should consider all possible outcomes like a tie, playerSelection is Rock, Paper, or Scissors
-
-// const playerSelection = "rock";
-// const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection));
-
-//keeps track of player score vs. computer score
-let playerScore = 0;
-let computerScore = 0;
 
 //plays one round of rock, paper, scissors and determines the winner of the round
 const playRound = (playerSelection, computerSelection) => {
@@ -48,32 +38,49 @@ const playRound = (playerSelection, computerSelection) => {
     }
 }
 
-//Create a function called game()
-//Inside the game() function call the playRound function that will play a 5 round game and keeps score. It will report the winner and loser at the end.
+//an event listener that chooses rock for the playerSelection when 
+rock.addEventListener('click', () => {
+    const playerSelection = "rock";
+    const computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+    console.log(winGame());
+})
 
-//use a for loop for the 5 round game. If the computer wins increment their score +1. If the player wins increment their score +1
+paper.addEventListener('click', () => {
+    const playerSelection = 'paper';
+    const computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+    console.log(winGame());
+})
 
-// Use prompt() to get user input
+scissors.addEventListener('click', () => {
+    const playerSelection = 'scissors';
+    const computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+    console.log(winGame());
+})
 
+// for loop that plays 5 rounds of rock, paper, scissors
+// const game = () => {
+//     for (let i = 0; i < 5; i++) {
+//         const playerSelection = window.prompt("Choose your weapon!").toLowerCase();
+//         const computerSelection = getComputerChoice().toLowerCase();
+//         console.log(playRound(playerSelection, computerSelection));
+//     }  
+// }
 
-//for loop that plays 5 rounds of rock, paper, scissors
-const game = () => {
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = window.prompt("Choose your weapon!").toLowerCase();
-        const computerSelection = getComputerChoice().toLowerCase();
-        console.log(playRound(playerSelection, computerSelection));
-    }
-}
-
-game();
+// game();
 
 //determines the winner of the rock, paper, scissors game
 const winGame = () => {
-    if (playerScore > computerScore) {
+    if (playerScore === 5) {
         return "Congratulations! You Win the Game!";
-    } else if (playerScore < computerScore) {
-        return "Sorry. You Lose. Try again. :(";
+    } else if (computerScore === 5) {
+        return "Sorry. You Lose.";
     }
 }
 
-console.log(winGame());
+
+
+
+//when the person clicks on the rock button, it should choose the option rock. Need an event listener that does a 'click' event 
