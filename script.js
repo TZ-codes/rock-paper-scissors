@@ -7,69 +7,85 @@ const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 
+const score = document.querySelector('.score');
+const results = document.querySelector('.results');
+const winner = document.querySelector('.winner');
+
+
+//Add a div for displaying results and change all of your console.logs into DOM methods.
+
+// Display the running score, and announce a winner of the game once one player reaches 5 points.
+//what needs to happen:
+    //after every round played I need the score div to update the playerScore or ComputerScore by incrementing it unless it is a tie
+    //when a score of 5 is reached for either the computer or player I needs to announce the winner
+
 //Selects computer's choice for game of rock, paper, scissors
 const getComputerChoice = () => {
     let result = Math.floor(Math.random() * 3 );
     if(result === 0) {
-        return "rock";
+        return "Rock";
     } else if (result === 1) {
-        return "paper";
+        return "Paper";
     } else if (result === 2) {
-        return "scissors";
+        return "Scissors";
     }
 };
 
 //plays one round of rock, paper, scissors and determines the winner of the round
 const playRound = (playerSelection, computerSelection) => {
     if (playerSelection === computerSelection) {
-        return `It's a Tie! Player score: ${playerScore}. Computer score: ${computerScore}.`;
-    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+        results.textContent = `It's a Tie!`;
+    } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
         playerScore++;
-        return `You Win! ${playerSelection} beats ${computerSelection}. Player Score: ${playerScore}. Computer score: ${computerScore}.`
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        results.textContent = `You Win! ${playerSelection} beats ${computerSelection}.` 
+        score.textContent = `Player Score: ${playerScore}. Computer score: ${computerScore}.`
+        winGame();
+        winner.textContent = winGame();
+    } else if (playerSelection === "Paper" && computerSelection === "Rock") {
         playerScore++;
-        return `You Win! ${playerSelection} beats ${computerSelection}. Player Score: ${playerScore}. Computer score: ${computerScore}.`
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        results.textContent = `You Win! ${playerSelection} beats ${computerSelection}.` 
+        score.textContent = `Player Score: ${playerScore}. Computer score: ${computerScore}.`
+        winGame();
+        winner.textContent = winGame();
+    } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
         playerScore++;
-        return `You Win! ${playerSelection} beats ${computerSelection}. Player Score: ${playerScore}. Computer score: ${computerScore}.`
+        results.textContent = `You Win! ${playerSelection} beats ${computerSelection}.` 
+        score.textContent = `Player Score: ${playerScore}. Computer score: ${computerScore}.`
+        winGame();
+        winner.textContent = winGame();
     } else {
         computerScore++;
-        return `You Lose! ${computerSelection} beats ${playerSelection}. Player Score: ${playerScore}. Computer score: ${computerScore}.`
+        results.textContent = `You Lose! ${computerSelection} beats ${playerSelection}.`
+        score.textContent = `Player Score: ${playerScore}. Computer score: ${computerScore}.`
+        winGame();
+        winner.textContent = winGame();
     }
 }
 
 //an event listener that chooses rock for the playerSelection when 
 rock.addEventListener('click', () => {
-    const playerSelection = "rock";
+    const playerSelection = "Rock";
     const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-    console.log(winGame());
+    playRound(playerSelection, computerSelection);
+
+    winGame();
 })
 
 paper.addEventListener('click', () => {
-    const playerSelection = 'paper';
+    const playerSelection = 'Paper';
     const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-    console.log(winGame());
+    playRound(playerSelection, computerSelection);
+
+    winGame();
 })
 
 scissors.addEventListener('click', () => {
-    const playerSelection = 'scissors';
+    const playerSelection = 'Scissors';
     const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-    console.log(winGame());
+    playRound(playerSelection, computerSelection);
+    
+    
 })
-
-// for loop that plays 5 rounds of rock, paper, scissors
-// const game = () => {
-//     for (let i = 0; i < 5; i++) {
-//         const playerSelection = window.prompt("Choose your weapon!").toLowerCase();
-//         const computerSelection = getComputerChoice().toLowerCase();
-//         console.log(playRound(playerSelection, computerSelection));
-//     }  
-// }
-
-// game();
 
 //determines the winner of the rock, paper, scissors game
 const winGame = () => {
@@ -79,8 +95,3 @@ const winGame = () => {
         return "Sorry. You Lose.";
     }
 }
-
-
-
-
-//when the person clicks on the rock button, it should choose the option rock. Need an event listener that does a 'click' event 
