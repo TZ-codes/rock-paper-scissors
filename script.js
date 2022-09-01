@@ -58,7 +58,7 @@ const playRound = (playerSelection, computerSelection) => {
     }
 }
 
-//an event listener that chooses rock for the playerSelection when 
+//an event listener that chooses rock for the playerSelection when clicked
 rock.addEventListener('click', () => {
     const playerSelection = "Rock";
     const computerSelection = getComputerChoice();
@@ -77,7 +77,7 @@ scissors.addEventListener('click', () => {
     playRound(playerSelection, computerSelection);
 })
 
-//determines the winner of the rock, paper, scissors game
+//displays the winner of the game
 const winGame = () => {
     if (playerScore === 5) {
         return "Congratulations! You Win the Game!";
@@ -86,10 +86,6 @@ const winGame = () => {
     }
 }
 
-
-//function that restarts the game
-    //Need to display text that says Play Again? With 2 buttons Yes or No
-    //If yes is clicked(event listener 'click') playerScore = 0, computerScore = 0, score.textContent = ''; results.textContent = '';, and winner.textContent = ''; and the two buttons, Yes and No disappear. Use div play-again and set it equal to '';
 
 let button = document.querySelector('.play-again');
 
@@ -104,7 +100,7 @@ const playAgain = () => {
         button.textContent = "Play Again?";    
         button.appendChild(yes);
         button.appendChild(no);
-        body.appendChild(button);
+        document.body.appendChild(button);
     }
 };
 
@@ -112,8 +108,11 @@ yes.addEventListener('click', () => {
     window.location.reload();
 })
 
-no.addEventListener('click', () => {
-    body.textContent = 'Thanks for playing!';
+no.addEventListener('click', func = () => {
+    const newDiv = document.createElement('div');
+    newDiv.textContent = "Thanks for playing!";
+    document.body.appendChild(newDiv);
+    no.removeEventListener('click', func);
 })
 
 
