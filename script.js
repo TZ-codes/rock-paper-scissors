@@ -10,7 +10,6 @@ const score = document.querySelector('.score');
 const results = document.querySelector('.results');
 const winner = document.querySelector('.winner');
 
-let button = document.querySelector('.play-again');
 
 //Selects computer's choice for game of rock, paper, scissors
 const getComputerChoice = () => {
@@ -91,13 +90,18 @@ const winGame = () => {
 //function that restarts the game
     //Need to display text that says Play Again? With 2 buttons Yes or No
     //If yes is clicked(event listener 'click') playerScore = 0, computerScore = 0, score.textContent = ''; results.textContent = '';, and winner.textContent = ''; and the two buttons, Yes and No disappear. Use div play-again and set it equal to '';
+
+let button = document.querySelector('.play-again');
+
+const yes = document.createElement('button')
+const no = document.createElement('button');
+
+yes.textContent = 'Yes';
+no.textContent = 'No';
+
 const playAgain = () => {
     if (playerScore === 5 || computerScore === 5) {
-        button.textContent = "Play Again?";
-        const yes = document.createElement('button')
-        const no = document.createElement('button');
-        yes.textContent = 'Yes';
-        no.textContent = 'No';
+        button.textContent = "Play Again?";    
         button.appendChild(yes);
         button.appendChild(no);
         body.appendChild(button);
@@ -105,13 +109,11 @@ const playAgain = () => {
 };
 
 yes.addEventListener('click', () => {
-    playerScore = 0;
-    computerScore = 0;
-    score.textContent = ''; 
-    results.textContent = '';
-    winner.textContent = '';
+    window.location.reload();
 })
 
 no.addEventListener('click', () => {
     body.textContent = 'Thanks for playing!';
 })
+
+
