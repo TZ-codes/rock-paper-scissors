@@ -59,19 +59,19 @@ const playRound = (playerSelection, computerSelection) => {
 }
 
 //an event listener that chooses rock for the playerSelection when clicked
-rock.addEventListener('click', () => {
+rock.addEventListener('click', rockFunc = () => {
     const playerSelection = "Rock";
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
 })
 
-paper.addEventListener('click', () => {
+paper.addEventListener('click', paperFunc = () => {
     const playerSelection = 'Paper';
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
 })
 
-scissors.addEventListener('click', () => {
+scissors.addEventListener('click', scissorsFunc = () => {
     const playerSelection = 'Scissors';
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
@@ -101,6 +101,9 @@ const playAgain = () => {
         button.appendChild(yes);
         button.appendChild(no);
         document.body.appendChild(button);
+        rock.removeEventListener('click', rockFunc)
+        paper.removeEventListener('click', paperFunc)
+        scissors.removeEventListener('click', scissorsFunc)
     }
 };
 
