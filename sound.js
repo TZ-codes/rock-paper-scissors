@@ -1,8 +1,8 @@
-let muteBtn = document.querySelector('mute-btn');
+let muteBtn = document.querySelector('.mute-btn');
 const blueBird = document.querySelector('sound');
 
 muteBtn.addEventListener('click', function() {
-  const icon = document.querySelector('i');
+  const icon = this.querySelector('i');
 
   if (icon.classList.contains('fa-volume-high')) {
     icon.classList.remove('fa-volume-high');
