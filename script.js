@@ -100,7 +100,7 @@ const playAgain = () => {
         button.textContent = "Play Again?";    
         button.appendChild(yes);
         button.appendChild(no);
-        document.body.appendChild(button);
+        winner.appendChild(button);
         rock.removeEventListener('click', rockFunc)
         paper.removeEventListener('click', paperFunc)
         scissors.removeEventListener('click', scissorsFunc)
@@ -114,7 +114,7 @@ yes.addEventListener('click', () => {
 no.addEventListener('click', func = () => {
     const newDiv = document.createElement('div');
     newDiv.textContent = "Thanks for playing!";
-    document.body.appendChild(newDiv);
+    button.appendChild(newDiv);
     no.removeEventListener('click', func);
 })
 
