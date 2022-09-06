@@ -12,9 +12,27 @@
 
 h1, h2{
   font-family: Naruto;
+  text-align: center;
+}
+
+h1 {
+  padding-bottom: 20px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
+.rock, .paper, .scissors {
+  padding: 10px;
+  margin: 10px;
 }
 
 .mute-btn {
   text-align: end;
+}
+
+footer {
+  text-align: center;
 }
 
